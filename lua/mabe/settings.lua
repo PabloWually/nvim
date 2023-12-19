@@ -2,7 +2,7 @@ local opt = vim.opt
 vim.g.mapleader = ' '
 -- line numbers
 opt.relativenumber = true
-opt.number = false
+opt.number = true
 
 -- tabs and indentation
 opt.tabstop = 2
