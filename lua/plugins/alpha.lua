@@ -35,6 +35,7 @@ return {
 			button("r", "󱈖   Recent files", "<cmd>Telescope frecency workspace=CWD<CR>"),
 			button("f", "󱀲   Find file", "<cmd>Telescope find_files hidden=true path_display=smart<CR>"),
 			button("s", "󱘣   Search files", "<cmd>Telescope live_grep path_display=smart<CR>"),
+			button("t", "   Git Graph", "<cmd>Flog<CR>"),
 			-- TODO Config and understand projects with telescope
 			-- button("p", "   Projects", "<cmd>Telescope projects<CR>"),
 			button("q", "󰱝   Quit Neovim", "<cmd>qa!<CR>"),
