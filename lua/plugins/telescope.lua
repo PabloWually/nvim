@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
+    "olacin/telescope-cc.nvim",
 		{
 			'nvim-telescope/telescope-fzf-native.nvim',
 			build = 'make'
@@ -61,6 +62,7 @@ return {
 		require('telescope').setup(opts)
 		require('telescope').load_extension('fzf')
 		require('telescope').load_extension('frecency')
+    require('telescope').load_extension('conventional_commits')
 	end,
 	keys = {
 		{
@@ -118,12 +120,19 @@ return {
 			end
 		},
 		{
-			"<leader>pf",
+			"<leader>ps",
 			function()
 				require('telescope.builtin').find_files()
 			end,
 			desc = "Telescope Find Files",
 		},
+    {
+      "<leader>pf",
+      function ()
+        vim.cmd(string.format("Telescope live_grep path_display=smart<CR>"))
+      end,
+      desc = "Telescope Fuzzy Find"
+    },
 		{
 			"<leader>ph",
 			function()
