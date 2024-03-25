@@ -7,7 +7,7 @@ opt.number = true
 -- tabs and indentation
 opt.tabstop = 2
 opt.shiftwidth = 2
-opt.expandtab = false
+opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 
@@ -80,3 +80,9 @@ vim.wo.colorcolumn = "80,120"
 vim.wo.list = true
 vim.wo.numberwidth = 2
 vim.wo.wrap = false
+
+-- Chars
+vim.cmd [[highlight IndentBlanklineContextChar guifg=#fca311 gui=nocombine]]
+
+opt.listchars:append "space:⋅"
+opt.listchars:append "eol:↴"
