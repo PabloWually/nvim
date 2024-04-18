@@ -1,6 +1,8 @@
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
   config = function()
     require("lualine").setup {
       options = {
@@ -32,7 +34,7 @@ return {
           },
         },
         lualine_x = { 'encoding', 'filetype' },
-        lualine_y = { {'datetime', style = '%H:%M'} },
+        lualine_y = {  },
         lualine_z = { 'location', 'progress' }
       },
       inactive_sections = {
