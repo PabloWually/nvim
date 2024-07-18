@@ -98,7 +98,7 @@ return {
       desc = "Telescope Git Files",
     },
     {
-      "<leader>pe",
+      "<leader>fb",
       function()
         require("telescope.builtin").buffers()
       end,
@@ -145,21 +145,21 @@ return {
       end
     },
     {
-      "<leader>ps",
+      "<leader>ff",
       function()
-        require('telescope.builtin').find_files({ shorten_path = true })
+        require('telescope.builtin').find_files({ shorten_path = true, hidden = true })
       end,
       desc = "Telescope Find Files",
     },
     {
-      "<leader>pf",
+      "<leader>fs",
       function()
         vim.cmd(string.format("Telescope live_grep path_display=smart<CR>"))
       end,
       desc = "Telescope Fuzzy Find"
     },
     {
-      "<leader>ph",
+      "<leader>fh",
       function()
         require("telescope.builtin").help_tags()
       end,
