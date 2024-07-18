@@ -8,13 +8,13 @@ return {
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-git',
-      'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
+      'L3MON4D3/LuaSnip'
     },
     event = "VeryLazy",
     config = function()
       local cmp = require("cmp")
-      vim.opt.completeopt = { "menu", "menuone", "noselect" }
+      vim.opt.completeopt = { "menu", "menuone", "preview" }
 
       cmp.setup({
         snippet = {
