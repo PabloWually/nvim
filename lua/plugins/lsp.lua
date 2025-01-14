@@ -5,7 +5,7 @@ return {
     "folke/neodev.nvim",
   },
   config = function()
-    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+    vim.keymap.set('n', '<space>de', vim.diagnostic.open_float)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
     vim.keymap.set('n', '<space>qd', vim.diagnostic.setloclist)
@@ -37,8 +37,9 @@ return {
         }
       }
     })
-    require("lspconfig").tsserver.setup({
+    require("lspconfig").ts_ls.setup({
       on_attach = on_attach,
+      filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     })
     require("lspconfig").html.setup({
       on_attach = on_attach,
@@ -48,11 +49,14 @@ return {
     })
     require("lspconfig").graphql.setup({
       on_attach = on_attach,
+      filetypes = { "graphql" },
     })
     require("lspconfig").emmet_ls.setup({
       on_attach = on_attach,
       filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" }
     })
+    require("lspconfig").intelephense.setup({
+      on_attach = on_attach,
+    })
   end
-
 }

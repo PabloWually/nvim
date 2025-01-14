@@ -2,14 +2,21 @@ return {
   {
     -- 'wuelnerdotexe/vim-enfocado',
     "sainnhe/sonokai",
-    lazy = false,  -- make sure we load this during startup if it is your main colorscheme
+  },
+  { 
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+        vim.cmd.colorscheme('catppuccin-latte')
+      end
   },
   {
     "yorik1984/newpaper.nvim",
-    lazy = false,
     priority = 1000,
     opts = {
-      style = 'light'
+      style = 'dark',
     }
   },
 }
