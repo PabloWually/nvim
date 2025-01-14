@@ -29,8 +29,7 @@ return {
 		end
 
 		dashboard.section.buttons.val = {
-			-- TODO Config and understand persisted to use sessions
-			-- button("l", "   Load session", "<cmd>lua require('persisted').load()<CR>"),
+			button("l", "   Load session", "<cmd>lua require('persisted').load()<CR>"),
 			button("e", "   File Explorer", "<cmd>Telescope file_browser select_buffer=true<CR>"),
 			button("r", "󱈖   Recent files", "<cmd>Telescope frecency workspace=CWD<CR>"),
 			button("f", "󱀲   Find file", "<cmd>Telescope find_files hidden=true path_display=smart<CR>"),

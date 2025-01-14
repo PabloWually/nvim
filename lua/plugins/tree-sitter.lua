@@ -41,6 +41,7 @@ return {
       "gitignore",
       "prisma",
       "graphql",
+      "php",
     },
     textobjects = {
       select = {

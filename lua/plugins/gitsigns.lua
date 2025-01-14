@@ -2,7 +2,7 @@ return {
   "lewis6991/gitsigns.nvim",
   opts = {
     numhl = true,
-    max_f = 10000,
+    max_file_length = 10000,
     signs = {
       add = { text = "▌" },
       change = { text = "▌" },
