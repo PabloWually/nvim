@@ -28,8 +28,7 @@ vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 -- Working whit lines
 vim.keymap.set("n", "<leader>,", ":norm A,<CR>", opts)
 vim.keymap.set("n", "<leader>;", ":norm A;<CR>", opts)
-vim.keymap.set("n", "<CR>", "o<ESC>", opts)
-vim.keymap.set("n", "<S-CR>", "O<ESC>", opts)
+vim.keymap.set("n", "<S-CR>", "o<ESC>", opts)
 vim.keymap.set("n", "B", "^", opts)
 vim.keymap.set("n", "E", "$", opts)
 

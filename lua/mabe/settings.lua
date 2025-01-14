@@ -23,7 +23,6 @@ opt.cursorline = true
 opt.cursorlineopt = "screenline,number"
 
 --appearance
-opt.background = "dark"
 opt.termguicolors = true
 opt.signcolumn = "yes"
 
@@ -53,7 +52,7 @@ opt.backup = false
 opt.errorbells = false
 opt.swapfile = false
 
-opt.hlsearch = false
+opt.hlsearch = true
 opt.breakindent = true
 opt.updatetime = 300
 
