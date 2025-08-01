@@ -49,14 +49,31 @@ return {
     priority = 1000
   },
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  {
     "yorik1984/newpaper.nvim",
     priority = 1000,
     config = true,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nightfox").setup({
+        options = {
+          terminal_colors = true,
+          styles = {
+            comments = "italic",
+            keywords = "bold",
+            functions = "bold",
+            variables = "italic",
+          },
+        },
+      })
+    end
   }
 }
