@@ -5,6 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
     "olacin/telescope-cc.nvim",
+    'mrloop/telescope-git-branch.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make'
@@ -88,6 +89,7 @@ return {
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('frecency')
     require('telescope').load_extension('conventional_commits')
+    require('telescope').load_extension('git_branch')
   end,
   keys = {
     {
@@ -121,7 +123,13 @@ return {
     {
       "<leader>gb",
       function()
-        require("telescope.builtin").git_branches()
+        require("telescope.builtin").git_branches{
+          attach_mappings = function (_, map)
+            local actions = require("telescope.actions")
+            map("i", "<c-j>", actions.git_create_branch)
+            return true
+          end
+        }
       end,
       desc = "Telescope Git branches",
     },

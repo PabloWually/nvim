@@ -16,6 +16,11 @@ vim.keymap.set("n", "<leader>q", ":q<CR>", opts)
 vim.keymap.set("n", "<leader>Q", ":q!<CR>", opts)
 vim.keymap.set("n", "<leader>qa", ":qa<CR>", opts)
 vim.keymap.set("n", "<leader>bx", ":%bdelete|edit#|bdelete#<CR>", opts)
+-- Move between windows
+vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", opts)
+vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", opts)
+vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", opts)
+vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", opts)
 
 -- tabs
 vim.keymap.set("n", "<leader>to", ":tabnew<CR>", opts)

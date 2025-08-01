@@ -84,4 +84,5 @@ vim.wo.wrap = false
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#fca311 gui=nocombine]]
 
 opt.listchars:append "space:⋅"
+opt.listchars:append "tab:⋅⋅"
 opt.listchars:append "eol:↴"
