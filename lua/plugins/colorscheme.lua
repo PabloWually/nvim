@@ -1,79 +1,66 @@
 return {
   {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      theme = "wave",
+      functionsStyle = { bold = true },
+      typesStyle = { italic = true },
+    },
+    config = function(_, opts)
+      require("kanagawa").setup(opts)
+      vim.cmd.colorscheme "kanagawa"
+    end,
+  },
+  {
     "sainnhe/sonokai",
+    event = "VeryLazy",
   },
   {
     "nyoom-engineering/oxocarbon.nvim",
-    -- priority = 1000,
-    -- lazy = false,
-    -- config = function()
-    --   vim.opt.background = "dark"
-    --   vim.cmd.colorscheme "oxocarbon"
-    -- end,
+    event = "VeryLazy",
   },
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    config = function()
-      -- vim.cmd.colorscheme('catppuccin-latte')
-      require("catppuccin").setup({
-        --   custom_highlights = function(colors)
-        --     local u = require("catppuccin.utils.colors")
-        --     return {
-        --       CursorLine = {
-        --         bg = u.vary_color(
-        --           { latte = u.lighten(colors.mantle, 0.10, colors.base) },
-        --           u.darken(colors.surface0, 0.64, colors.base)
-        --         ),
-        --       },
-        --     }
-        --   end,
-        default_integrations = false,
-        integrations = {
-          alpha = true,
-          mason = false,
-          cmp = true,
-          copilot_vim = false,
-          nvimtree = true,
-          telescope = {
-            enable = true,
-          },
-        }
-      })
-    end
+    event = "VeryLazy",
+    opts = {
+      default_integrations = false,
+      integrations = {
+        alpha = true,
+        mason = false,
+        cmp = true,
+        copilot_vim = false,
+        nvimtree = true,
+        telescope = {
+          enable = true,
+        },
+      },
+    },
   },
   {
     "bluz71/vim-moonfly-colors",
     name = "moonfly",
-    lazy = false,
-    priority = 1000
+    event = "VeryLazy",
   },
   {
     "yorik1984/newpaper.nvim",
-    priority = 1000,
-    config = true,
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    lazy = false,
-    priority = 1000,
+    event = "VeryLazy",
   },
   {
     "EdenEast/nightfox.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("nightfox").setup({
-        options = {
-          terminal_colors = true,
-          styles = {
-            comments = "italic",
-            keywords = "bold",
-            functions = "bold",
-            variables = "italic",
-          },
+    event = "VeryLazy",
+    opts = {
+      options = {
+        terminal_colors = true,
+        styles = {
+          comments = "italic",
+          keywords = "bold",
+          functions = "bold",
+          variables = "italic",
         },
-      })
-    end
-  }
+      },
+    },
+  },
 }

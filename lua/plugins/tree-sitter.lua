@@ -30,7 +30,6 @@ return {
         "javascript",
         "python",
         "json",
-        "json",
         "html",
         "htmldjango",
         "dockerfile",
@@ -38,7 +37,14 @@ return {
         "gitignore",
         "prisma",
         "graphql",
-        "php",
+        "tsx",
+        "regex",
+        "markdown",
+        "markdown_inline",
+        "angular",
+        "astro",
+        "cpp",
+        "diff",
       },
       textobjects = {
         select = {
