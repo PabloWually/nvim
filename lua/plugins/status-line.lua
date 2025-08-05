@@ -10,7 +10,7 @@ return {
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
       disabled_filetypes = {
-        statusline = { "alpha", "nvim-tree" },
+        statusline = { "alpha", "NvimTree" },
         winbar = {},
       },
       ignore_focus = {},

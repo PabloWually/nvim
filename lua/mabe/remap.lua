@@ -1,53 +1,46 @@
-local opts = { noremap = true, silent = true }
---Change mode
-vim.keymap.set("i", "jj", "<ESC>", opts)
-vim.keymap.set("n", "<leader>vb", "<C-v>", opts)
+local wk = require("which-key")
 
---Manage files and split windows
-vim.keymap.set("n", "<leader>nt", ":Explore<CR>", opts)
-vim.keymap.set("n", "<leader>rb", ":Telescope frecency workspace=CWD<CR>", opts)
---Open terminal
-vim.keymap.set("n", "<leader>te", ":split | :terminal<CR> | 10<C-W>-", opts)
---Write files and quit
-vim.keymap.set("n", "<leader>w", ":w<CR>", opts)
-vim.keymap.set("n", "<leader>wq", ":wq<CR>", opts)
-vim.keymap.set("n", "<leader>wa", ":wa<CR>", opts)
-vim.keymap.set("n", "<leader>q", ":q<CR>", opts)
-vim.keymap.set("n", "<leader>Q", ":q!<CR>", opts)
-vim.keymap.set("n", "<leader>qa", ":qa<CR>", opts)
-vim.keymap.set("n", "<leader>bx", ":%bdelete|edit#|bdelete#<CR>", opts)
--- Move between windows
-vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", opts)
-vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", opts)
-vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", opts)
-vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", opts)
-
--- tabs
-vim.keymap.set("n", "<leader>to", ":tabnew<CR>", opts)
-vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", opts)
-vim.keymap.set("n", "<leader>tn", ":tabn<CR>", opts)
-vim.keymap.set("n", "<leader>tp", ":tabp<CR>", opts)
--- nvim-tree
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
--- Working whit lines
-vim.keymap.set("n", "<leader>,", ":norm A,<CR>", opts)
-vim.keymap.set("n", "<leader>;", ":norm A;<CR>", opts)
-vim.keymap.set("n", "<S-CR>", "o<ESC>", opts)
-vim.keymap.set("n", "B", "^", opts)
-vim.keymap.set("n", "E", "$", opts)
-
--- vim-maximizer
-vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", opts)
-
--- Functions for multiple cursors
-vim.g.mc = vim.api.nvim_replace_termcodes([[y/\V<C-r>=escape(@", '/')<CR><CR>]], true, true, true)
-
-function SetupMultipleCursors()
-  vim.keymap.set(
-    "n",
-    "<Enter>",
-    [[:nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z]],
-    { remap = true, silent = true }
-  )
-end
+wk.add({
+  --Change mode
+  {
+    mode = { "i" },
+    { "jj", "<ESC>", desc = "Escape Insert Mode" },
+  },
+  {
+    mode = { "n" },
+    { "<leader>vb", "<C-v>",                                 desc = "Visual Block" },
+    --Manage files and split windows
+    { "<leader>nt", ":Explore<CR>",                          desc = "Explore Files" },
+    { "<leader>rf", ":Telescope frecency workspace=CWD<CR>", desc = "Recent Files" },
+    --Open terminal
+    { "<leader>te", ":split | :terminal <CR> | 10<C-W>-",    desc = "Open Terminal" },
+    --Write files and quit
+    { "<leader>w",  ":w<CR>",                                desc = "Save File" },
+    { "<leader>wq", ":wq<CR>",                               desc = "Save and Quit" },
+    { "<leader>wa", ":wa<CR>",                               desc = "Save All" },
+    { "<leader>q",  ":q<CR>",                                desc = "Quit" },
+    { "<leader>Q",  ":q!<CR>",                               desc = "Force Quit" },
+    { "<leader>qa", ":qa<CR>",                               desc = "Quit All" },
+    { "<leader>bx", ":%bdelete|edit#|bdelete#<CR>",          desc = "Delete Buffer" },
+    -- Move between windows
+    { "<C-h>",      "<cmd> TmuxNavigateLeft<CR>",            desc = "Navigate Left" },
+    { "<C-j>",      "<cmd> TmuxNavigateDown<CR>",            desc = "Navigate Down" },
+    { "<C-k>",      "<cmd> TmuxNavigateUp<CR>",              desc = "Navigate Up" },
+    { "<C-l>",      "<cmd> TmuxNavigateRight<CR>",           desc = "Navigate Right" },
+    -- tabs
+    { "<leader>to", ":tabnew<CR>",                           desc = "New Tab" },
+    { "<leader>tx", ":tabclose<CR>",                         desc = "Close Tab" },
+    { "<leader>tn", ":tabn<CR>",                             desc = "Next Tab" },
+    { "<leader>tp", ":tabp<CR>",                             desc = "Previous Tab" },
+    -- nvim-tree
+    { "<leader>e",  ":NvimTreeToggle<CR>",                   desc = "Toggle NvimTree" },
+    -- Working with lines
+    { "<leader>,",  ":norm A,<CR>",                          desc = "Append Comma" },
+    { "<leader>;",  ":norm A;<CR>",                          desc = "Append Semicolon" },
+    { "<Enter>",    "o<ESC>",                                desc = "Insert New Line Below" },
+    { "B",          "^",                                     desc = "Beginning of Line" },
+    { "E",          "$",                                     desc = "End of Line" },
+    -- vim-maximizer
+    { "<leader>sm", ":MaximizerToggle<CR>",                  desc = "Toggle Maximizer" },
+  },
+})
