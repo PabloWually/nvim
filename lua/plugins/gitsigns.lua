@@ -1,5 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
+  event = "BufReadPre",
   opts = {
     numhl = true,
     max_file_length = 10000,

@@ -12,7 +12,7 @@ local total_plugins = stats.count
 ---@param txt string The text to display on the button.
 ---@param keybind string The command to execute when the button is pressed.
 ---@param keybind_opts table|nil Optional keybind options.
----@return table The created button element.
+---@return table button The created button element.
 local function button(sc, txt, keybind, keybind_opts)
   local b = dashboard.button(sc, txt, keybind, keybind_opts)
   b.opts.hl = "AlphaButtonText"
@@ -22,7 +22,7 @@ end
 
 --- Gets the file extension from a filename.
 ---@param fn string The filename.
----@return string The file extension.
+---@return string extension The file extension.
 local function get_extension(fn)
   local match = fn:match("^.+(%..+)$")
   local ext = ""
@@ -39,7 +39,7 @@ local nvim_web_devicons = {
 
 --- Gets the devicon for a given filename.
 ---@param fn string The filename.
----@return string The icon character.
+---@return string icon The icon character.
 local function icon(fn)
   local nwd = require("nvim-web-devicons")
   local ext = get_extension(fn)
@@ -51,7 +51,7 @@ end
 ---@param sc string The shortcut key for the button.
 ---@param short_fn string The shortened filename to display.
 ---@param autocd boolean Whether to change the directory to the file's directory.
----@return table The created file button element.
+---@return table button_table The created file button element.
 local function file_button(fn, sc, short_fn, autocd)
   short_fn = if_nil(short_fn, fn)
   local ico_txt
@@ -95,7 +95,7 @@ local mru_opts = {
 ---@param cwd string? optional The current working directory to filter files.
 ---@param items_number number? optional The number of items to generate, default = 10.
 ---@param opts table? optional Options for ignoring files and autocd.
----@return table A table representing the group of MRU file buttons.
+---@return table mru_table A table representing the group of MRU file buttons.
 local function mru(start, cwd, items_number, opts)
   opts = opts or mru_opts
   items_number = if_nil(items_number, 10)
@@ -156,7 +156,7 @@ local function mru(start, cwd, items_number, opts)
 end
 
 --- Generates a greeting message based on the time of day.
----@return string The greeting message.
+---@return string greeting The greeting message.
 local greeting = function()
   -- Determine the appropriate greeting based on the hour
   local mesg
@@ -176,7 +176,7 @@ local greeting = function()
 end
 
 --- Generates the footer text with date, time, and plugin information.
----@return string The footer text.
+---@return string footer The footer text.
 local function footer()
   local footer_datetime = os.date("  %m-%d-%Y   %H:%M:%S")
   local version = vim.version()
@@ -187,7 +187,7 @@ local function footer()
 end
 
 --- Generates the title for the MRU list, including the current working directory.
----@return string The MRU title.
+---@return string title The MRU title.
 local function mru_title()
   return "MRU " .. vim.fn.getcwd()
 end

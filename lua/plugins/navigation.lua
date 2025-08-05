@@ -1,7 +1,7 @@
 return {
   {
-
     'ThePrimeagen/harpoon',
+    event = "BufReadPre",
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
