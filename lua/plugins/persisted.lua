@@ -1,5 +1,5 @@
 return {
-  "olimorris/persisted.nvim",
-  lazy = true,
-  config = true
+  "folke/persistence.nvim",
+  event = "BufReadPre",
+  opts = {},
 }
