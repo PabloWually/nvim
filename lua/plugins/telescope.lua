@@ -5,15 +5,6 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
     "olacin/telescope-cc.nvim",
-    'mrloop/telescope-git-branch.nvim',
-    {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make'
-    },
-    {
-      "nvim-telescope/telescope-frecency.nvim",
-      dependencies = { "kkharji/sqlite.lua" },
-    }
   },
 
   opts = {
@@ -61,24 +52,6 @@ return {
       },
     },
     extensions = {
-      fzf = {
-        fuzzy = true,                   -- false will only do exact matching
-        override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true,    -- override the file sorter
-        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-        -- the default case_mode is "smart_case"
-        hidden = { file_browser = true }
-      },
-      frecency = {
-        show_scores = false,
-        show_unindexed = true,
-        ignores_patterns = {
-          ".git/",
-          "*/tmp/*",
-          "/node_modules/*",
-          "*/vendor/*"
-        },
-      },
       file_browser = {
         theme = "dropdown"
       }
@@ -86,53 +59,9 @@ return {
   },
   config = function(opts)
     require('telescope').setup(opts)
-    require('telescope').load_extension('fzf')
-    require('telescope').load_extension('frecency')
     require('telescope').load_extension('conventional_commits')
-    require('telescope').load_extension('git_branch')
   end,
   keys = {
-    {
-      "<leader>pp",
-      function()
-        require('telescope.builtin').git_files({ show_untracked = true })
-      end,
-      desc = "Telescope Git Files",
-    },
-    {
-      "<leader>fb",
-      function()
-        require("telescope.builtin").buffers()
-      end,
-      desc = "Telescope buffers",
-    },
-    {
-      "<leader>gs",
-      function()
-        require("telescope.builtin").git_status()
-      end,
-      desc = "Telescope Git status",
-    },
-    {
-      "<leader>gc",
-      function()
-        require("telescope.builtin").git_bcommits()
-      end,
-      desc = "Telescope Git status",
-    },
-    {
-      "<leader>gb",
-      function()
-        require("telescope.builtin").git_branches{
-          attach_mappings = function (_, map)
-            local actions = require("telescope.actions")
-            map("i", "<c-j>", actions.git_create_branch)
-            return true
-          end
-        }
-      end,
-      desc = "Telescope Git branches",
-    },
     {
       "<leader>rp",
       function()
@@ -151,27 +80,6 @@ return {
           end
         })
       end
-    },
-    {
-      "<leader>ff",
-      function()
-        require('telescope.builtin').find_files({ shorten_path = true, hidden = true })
-      end,
-      desc = "Telescope Find Files",
-    },
-    {
-      "<leader>fs",
-      function()
-        vim.cmd(string.format("Telescope live_grep path_display=smart<CR>"))
-      end,
-      desc = "Telescope Fuzzy Find"
-    },
-    {
-      "<leader>fh",
-      function()
-        require("telescope.builtin").help_tags()
-      end,
-      desc = "Telescope Help"
     },
     {
       "<leader>bb",

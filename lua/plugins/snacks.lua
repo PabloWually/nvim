@@ -1,4 +1,3 @@
-local colors = require("utils.icons").rainbow
 return {
   "folke/snacks.nvim",
   priority = 1000,
