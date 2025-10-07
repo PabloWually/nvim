@@ -1,6 +1,7 @@
 return {
   "mason-org/mason-lspconfig.nvim",
   event = "VeryLazy",
+  version = "*",
   dependencies = {
     "mason-org/mason.nvim",
     "neovim/nvim-lspconfig",
@@ -10,7 +11,7 @@ return {
       "lua_ls",
       "ts_ls",
       "jsonls",
-      "eslint",
+      -- "eslint",
     },
     handlers = {
       function(server_name)

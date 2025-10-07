@@ -31,7 +31,7 @@ return {
     signature = { enabled = true },
 
     sources = {
-      compat = {},
+      -- compat = {},
       default = { "lsp", "path", "snippets", "buffer" },
     },
 
@@ -43,7 +43,7 @@ return {
       preset = "enter",
       ["<C-y>"] = { "select_and_accept" },
     },
-    opts_extend = { "sources.default" },
+    -- opts_extend = { "sources.default" },
     fuzzy = { implementation = "prefer_rust_with_warning" }
   }
 }
