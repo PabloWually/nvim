@@ -11,6 +11,7 @@ return {
       "lua_ls",
       "ts_ls",
       "jsonls",
+      "omnisharp",
       -- "eslint",
     },
     handlers = {
