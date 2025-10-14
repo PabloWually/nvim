@@ -21,11 +21,11 @@ return {
 	},
 	opts = {
 		notify_on_error = true,
-		format_on_save = {
-			lsp_fallback = true,
-			async = false,
-			timeout_ms = 500,
-		},
+		-- format_on_save = {
+		-- 	lsp_fallback = true,
+		-- 	async = false,
+		-- 	timeout_ms = 500,
+		-- },
 		formatters_by_ft = {
 			cs = { "csharpier" },
 			javascript = { "prettier" },
@@ -37,6 +37,7 @@ return {
 			json = { "prettier" },
 			markdown = { "prettier" },
 			lua = { "stylua" },
+      sql = { "sql-formatter" },
 		},
 	},
 }
