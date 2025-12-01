@@ -1,6 +1,7 @@
 return {
   "lewis6991/gitsigns.nvim",
   event = "BufReadPre",
+  dependencies = { "folke/which-key.nvim" },
   opts = {
     numhl = true,
     max_file_length = 10000,
@@ -51,41 +52,60 @@ return {
     },
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
+      local wk = require("which-key")
 
-      local function map(mode, l, r, opts)
-        opts = opts or {}
-        opts.buffer = bufnr
-        vim.keymap.set(mode, l, r, opts)
-      end
+      wk.register({
+        mode = "n",
+        ["]c"] = {
+          function()
+            if vim.wo.diff then return "]c" end
+            vim.schedule(function() gs.next_hunk() end)
+            return "<Ignore>"
+          end,
+          "Next hunk",
+          { expr = true },
+        },
+        ["[c"] = {
+          function()
+            if vim.wo.diff then return "[c" end
+            vim.schedule(function() gs.prev_hunk() end)
+            return "<Ignore>"
+          end,
+          "Previous hunk",
+          { expr = true },
+        },
+        ["<leader>h"] = {
+          name = "+git",
+          s = { ":Gitsigns stage_hunk<CR>", "Stage Hunk" },
+          r = { ":Gitsigns reset_hunk<CR>", "Reset Hunk" },
+          S = { gs.stage_buffer, "Stage Buffer" },
+          u = { gs.undo_stage_hunk, "Undo Stage Hunk" },
+          R = { gs.reset_buffer, "Reset Buffer" },
+          p = { gs.preview_hunk, "Preview Hunk" },
+          b = { function() gs.blame_line({ full = true }) end, "Blame Line" },
+          d = { gs.diffthis, "Diff This" },
+          D = { function() gs.diffthis("~") end, "Diff This (HEAD)" },
+        },
+        ["<leader>t"] = {
+          name = "+toggle",
+          b = { gs.toggle_current_line_blame, "Toggle Blame" },
+          d = { gs.toggle_deleted, "Toggle Deleted" },
+        },
+      }, { buffer = bufnr })
 
-      -- Navigation
-      map('n', ']c', function()
-        if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs.next_hunk() end)
-        return '<Ignore>'
-      end, { expr = true, desc = 'Next hunk' })
+      wk.register({
+        mode = "v",
+        ["<leader>h"] = {
+          name = "+git",
+          s = { ":Gitsigns stage_hunk<CR>", "Stage Hunk" },
+          r = { ":Gitsigns reset_hunk<CR>", "Reset Hunk" },
+        },
+      }, { buffer = bufnr })
 
-      map('n', '[c', function()
-        if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs.prev_hunk() end)
-        return '<Ignore>'
-      end, { expr = true, desc = 'Previous hunk' })
-
-      -- Actions
-      map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-      map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-      map('n', '<leader>hS', gs.stage_buffer, { desc = 'Stage buffer' })
-      map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
-      map('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset buffer' })
-      map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview hunk' })
-      map('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = 'Blame line' })
-      map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Toggle current line blame' })
-      map('n', '<leader>hd', gs.diffthis, { desc = 'Diff this' })
-      map('n', '<leader>hD', function() gs.diffthis('~') end, { desc = 'Diff this (HEAD)' })
-      map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle deleted' })
-
-      -- Text object
-      map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
+      wk.register({
+        mode = { "o", "x" },
+        ih = { ":<C-U>Gitsigns select_hunk<CR>", "Select Hunk" },
+      }, { buffer = bufnr })
     end,
   }
 }

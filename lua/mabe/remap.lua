@@ -37,7 +37,7 @@ wk.add({
     -- Working with lines
     { "<leader>,",  ":norm A,<CR>",                                             desc = "Append Comma" },
     { "<leader>;",  ":norm A;<CR>",                                             desc = "Append Semicolon" },
-    { "<Enter>",    "o<ESC>",                                                   desc = "Insert New Line Below" },
+    -- { "<Enter>",    "o<ESC>",                                                   desc = "Insert New Line Below" },
     { "B",          "^",                                                        desc = "Beginning of Line" },
     { "E",          "$",                                                        desc = "End of Line" },
     -- vim-maximizer
