@@ -48,5 +48,9 @@ return {
         },
       })
     end
+  },
+  {
+    "supermaven-inc/supermaven-nvim",
+    opts = {}
   }
 }
